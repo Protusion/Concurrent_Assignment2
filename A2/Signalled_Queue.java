@@ -23,6 +23,7 @@ class Signalled_Queue implements Queue {
             }
         }
         System.out.println(n+" reader");
+        readerturn = false;
         notify();
 
     }
@@ -38,6 +39,7 @@ class Signalled_Queue implements Queue {
         }
         n=x;
         System.out.println(n+" writer");
+        readerturn = true;
         notify();
     }
 
