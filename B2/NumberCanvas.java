@@ -2,7 +2,7 @@
 // j.n.magee 16.4.98
 // j.n.magee revised 8.8.2004
 
-package concurrent_assignment2.B2;
+package Concurrent_Assignment2.B2;
 
 import java.awt.*;
 import java.applet.*;
