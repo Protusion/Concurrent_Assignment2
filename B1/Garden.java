@@ -1,4 +1,4 @@
-package concurrent_assignment2.B1;
+package Concurrent_Assignment2.B1;
 
 /**
  * Search for the exact critical section, and protect it with Dekker's
@@ -86,6 +86,7 @@ class Counter {
     int value = 0;
     NumberCanvas display;
     boolean[] wantCS = {false, false};
+    volatile int turn = 0;
     
     Counter(NumberCanvas n) {
         display = n;
@@ -93,11 +94,23 @@ class Counter {
     }
 
     void increment(int ID) {
+        //Pre-protocol
         wantCS[ID] = true;
+        while(wantCS[1-ID]){
+            if(turn==1-ID){
+                wantCS[ID]=false;
+                while(turn==1-ID){}
+                wantCS[ID]=true;
+            }
+        }
+        //End of the pre-protocol
         int temp = value;   //read[v]
         CC.ForceCC();
         value = temp + 1;       //write[v+1]
         display.setvalue(value);
+        //Post-Protocol
+        turn=1-ID;
+        wantCS[ID]=false;
     }
 }
 
@@ -106,7 +119,6 @@ class Turnstile extends Thread {
     NumberCanvas display;
     Counter people;
     int ID;
-    volatile int turn = 0;
     
 
     Turnstile(NumberCanvas n, Counter c, int ID) {
