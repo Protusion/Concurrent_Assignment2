@@ -15,15 +15,18 @@ class Signalled_2Readers_Queue implements Queue{
 	int n=0;
 	
 	@Override
-	public void read() {
-		// TODO Auto-generated method stub
-		
+	synchronized public void read() {
+				
 	}
+        
+        @Override
+        synchronized public void read(int ID){
+            
+        }
 
 	@Override
-	public void write(int x) {
-		// TODO Auto-generated method stub
-		
+	synchronized public void write(int x) {
+            
 	}
 	
 	
