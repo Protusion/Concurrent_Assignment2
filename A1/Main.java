@@ -11,16 +11,15 @@ public class Main {
 		CS_Queue queue;
 		
 		queue=new CS_Queue();
-		
-		new Writer(queue);
+                new Writer(queue);
 		new Reader(queue);
 	
 
 		
 		//cola=new ColaSynchronized();
 		//cola=new ColaBusyWait();
-		//cola=new ColaConSeñales();
-		//queue=new ColaConSeñalesVariosConsumidores();
+		//cola=new ColaConSeï¿½ales();
+		//queue=new ColaConSeï¿½alesVariosConsumidores();
 		//cola=new ColaActivaVariosConsumidores();
 		
 		//new Consumidor(cola);
