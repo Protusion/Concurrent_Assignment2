@@ -9,6 +9,8 @@ public interface Queue {
 	 int n=0;
 	
 	 public void read();
+         
+         public void read(int ID);
 	 
 	 public void write(int x);
 }
