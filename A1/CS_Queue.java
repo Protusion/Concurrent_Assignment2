@@ -13,7 +13,7 @@ import concurrent_assignment2.A_intro.Queue;
 class CS_Queue implements Queue {
 
     int n = 0;
-    boolean readerturn;
+    volatile boolean readerturn;
 
     @Override
     public void read() {
