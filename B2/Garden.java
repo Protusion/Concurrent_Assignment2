@@ -94,29 +94,12 @@ class Counter {
     }
 
     synchronized void increment(int ID) {
-        //Pre-protocol
-        wantCS[ID] = true;
-        if(wantCS[1-ID]){
-            if(turn==1-ID){
-                wantCS[ID]=false;
-                try {
-                    wait();
-                } catch (InterruptedException ex) {
-                    System.out.println(ex);
-                }
-                wantCS[ID]=true;
-            }
-        }
         //CS
         int temp = value;   //read[v]
         CC.ForceCC();
         value = temp + 1;       //write[v+1]
         display.setvalue(value);
         //End of CS
-        //Post-protocol
-        wantCS[ID]=false;
-        turn=1-ID;
-        notify();
     }
 }
 
